@@ -1,0 +1,39 @@
+name: Update Formulas
+
+on: workflow_dispatch
+
+jobs:
+  update-formula:
+    strategy:
+      matrix:
+        build: ["into-docker"]
+        include:
+          - build: "into-docker"
+            repository: "into-docker/into-docker"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: "tap"
+
+      - name: import-formula
+        id: formula
+        uses: xsc/homebrew-import-release-action@v1
+        with:
+          target: tap/${{ matrix.build }}.rb
+          repository: ${{ matrix.repository }}
+          asset-selector: macos-amd64.zip
+          alt-asset-selector: linux-amd64.zip
+
+      - name: create-formula-pull-request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: "tap"
+          title: "Update '${{ matrix.build }}' formula (${{ steps.formula.outputs.version }})"
+          commit-message: "Formula: ${{ matrix.build }}@${{ steps.formula.outputs.version }}"
+          branch: "update-formula/${{ matrix.build }}-${{ steps.formula.outputs.version }}"
+          body: |
+            Update `${{ matrix.build }}` formula to version `${{ steps.formula.outputs.version }}`.
+
+            [Release can be found here.](${{ steps.formula.outputs.releaseUrl }})
