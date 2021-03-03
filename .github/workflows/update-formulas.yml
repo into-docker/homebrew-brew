@@ -14,14 +14,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-        with:
-          path: "tap"
 
       - name: import-formula
         id: formula
-        uses: xsc/homebrew-import-release-action@v1
+        uses: xsc/homebrew-import-release-action@v2
         with:
-          target: tap/${{ matrix.build }}.rb
+          template: templates/${{ matrix.build }}.template.rb
+          target: ${{ matrix.build }}.rb
           repository: ${{ matrix.repository }}
           asset-selector: macos-amd64.zip
           alt-asset-selector: linux-amd64.zip
@@ -29,7 +28,6 @@ jobs:
       - name: create-formula-pull-request
         uses: peter-evans/create-pull-request@v3
         with:
-          path: "tap"
           title: "Update '${{ matrix.build }}' formula (${{ steps.formula.outputs.version }})"
           commit-message: "Formula: ${{ matrix.build }}@${{ steps.formula.outputs.version }}"
           branch: "update-formula/${{ matrix.build }}-${{ steps.formula.outputs.version }}"
