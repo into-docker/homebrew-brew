@@ -1,14 +1,14 @@
 class IntoDocker < Formula
   desc "Never write another Dockerfile"
   homepage "https://github.com/into-docker/into-docker"
-  version "1.1.2"
+  version "1.1.3"
 
   if OS.linux?
-    url "https://github.com/into-docker/into-docker/releases/download/v1.1.2/into-1.1.2-linux-amd64.zip"
-    sha256 "1975a9a92bec020a2cc1868b0ff1df8fb8fb2523648881d9d0f26d5d8d40ea82"
+    url "https://github.com/into-docker/into-docker/releases/download/v1.1.3/into-1.1.3-linux-amd64.zip"
+    sha256 "0f9b9db0db7df1c6f977ed1d8c92cc8d5fd492a672c312a7a1bb7470f0f53de7"
   else
-    url "https://github.com/into-docker/into-docker/releases/download/v1.1.2/into-1.1.2-macos-amd64.zip"
-    sha256 "9082ca994906b869012d8da469e1a3ddc4ff83aeab219e5110eeb5596ccf4c65"
+    url "https://github.com/into-docker/into-docker/releases/download/v1.1.3/into-1.1.3-macos-amd64.zip"
+    sha256 "cd93382fa194372b64260570ad9726e4e6b7b6f62eb18ad70e805783b0e1b5d7"
   end
 
   bottle :unneeded
