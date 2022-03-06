@@ -11,8 +11,6 @@ class IntoDocker < Formula
     sha256 "${HOMEBREW_SHA256}"
   end
 
-  bottle :unneeded
-
   def install
     bin.install "into"
   end
