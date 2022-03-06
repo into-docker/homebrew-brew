@@ -11,8 +11,6 @@ class IntoDocker < Formula
     sha256 "c676e904f9658c6775f7048cf0d7705d790609a452149212d3044085f2aa8677"
   end
 
-  bottle :unneeded
-
   def install
     bin.install "into"
   end
