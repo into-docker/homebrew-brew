@@ -1,14 +1,14 @@
 class IntoDocker < Formula
   desc "Never write another Dockerfile"
   homepage "https://github.com/into-docker/into-docker"
-  version "1.1.4"
+  version "1.1.5"
 
   if OS.linux?
-    url "https://github.com/into-docker/into-docker/releases/download/v1.1.4/into-1.1.4-linux-amd64.zip"
-    sha256 "510861936ecdf4f777ad1f7400e3a150636b0bffbd0701a0814e7e2e13825b4d"
+    url "https://github.com/into-docker/into-docker/releases/download/v1.1.5/into-1.1.5-linux-amd64.zip"
+    sha256 "a6e0f589874c162ac5580829c8d4e194790dac9911229888ad2af9dd772db0b6"
   else
-    url "https://github.com/into-docker/into-docker/releases/download/v1.1.4/into-1.1.4-macos-amd64.zip"
-    sha256 "c676e904f9658c6775f7048cf0d7705d790609a452149212d3044085f2aa8677"
+    url "https://github.com/into-docker/into-docker/releases/download/v1.1.5/into-1.1.5-macos-amd64.zip"
+    sha256 "20b520a2eb14c45c8a2cfce09bcf070f94c9a65215b70ffbd6a732331c0a1ccd"
   end
 
   def install
